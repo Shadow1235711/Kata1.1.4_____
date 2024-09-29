@@ -1,7 +1,6 @@
 package jm.task.core.jdbc.util;
 
 import jm.task.core.jdbc.model.User;
-import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -13,23 +12,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import static org.hibernate.cfg.AvailableSettings.DRIVER;
-
 public class Util {
     private static SessionFactory sessionFactory;
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-private static final String URL = "jdbc:mysql://localhost:3306/users";
-private static final String USERNAME = "Admin";
-private static final String PASSWORD = "Admin";
-    public static Connection getConnection(){
+    private static final String URL = "jdbc:mysql://localhost:3306/users";
+    private static final String USERNAME = "Admin";
+    private static final String PASSWORD = "Admin";
+
+    public static Connection getConnection() {
         Connection con = null;
-        try  {
+        try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             if (!connection.isClosed()) {
-                con=connection;
+                con = connection;
             }
         } catch (SQLException e) {
-            System.out.println("there is no connection... Exception!");
+            System.out.println("Не удалось соединиться");
         }
         return con;
     }
