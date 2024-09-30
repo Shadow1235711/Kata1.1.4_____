@@ -11,16 +11,16 @@ public class Util {
     private static final String PASSWORD = "Admin";
 
     public static Connection getConnection() {
-        Connection con = null;
+        Connection connect = null;
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             if (!connection.isClosed()) {
-                con = connection;
+                connect = connection;
             }
         } catch (SQLException e) {
             System.out.println("there is no connection... Exception!");
         }
-        return con;
+        return connect;
     }
 
 }
